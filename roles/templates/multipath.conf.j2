@@ -1,0 +1,18 @@
+defaults {
+user_friendly_names yes
+}
+
+blacklist {
+}
+
+multipaths {
+{% for multipath in multipath_conf.multipaths %}
+    multipath {
+        wwid {{ multipath.wwid }}
+        alias {{ multipath.alias }}
+    }
+{% endfor %}
+
+}
+
+
