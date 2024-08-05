@@ -3,4 +3,3 @@
   become: yes
   roles:
     - iscsi_multipath_installation
-    - oracle_db_installation
