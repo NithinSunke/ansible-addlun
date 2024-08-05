@@ -1,0 +1,2 @@
+iscsi_target_ip: 192.168.1.13
+iscsi_initiator_name: iqn.1988-12.com.oracle:ol8orcld01

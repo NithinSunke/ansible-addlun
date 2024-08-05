@@ -1,0 +1,23 @@
+---
+- name: Configure iSCSI initiator name
+  lineinfile:
+    path: /etc/iscsi/initiatorname.iscsi
+    regexp: '^InitiatorName='
+    line: "InitiatorName={{ iscsi_initiator_name }}"
+
+- name: Restart multipathd service
+  systemd:
+    name: iscsid
+    state: restarted    
+
+- name: Discover iSCSI targets
+  shell: "iscsiadm -m discovery -t sendtargets -p {{ iscsi_target_ip }}"
+  register: discovery_output
+
+- name: Login to iSCSI targets
+  shell: "iscsiadm -m node --login"
+  when: discovery_output.rc == 0   
+
+
+
+
