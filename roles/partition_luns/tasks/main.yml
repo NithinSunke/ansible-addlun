@@ -1,0 +1,16 @@
+---
+- name: Partition LUNs
+  block:
+    - name: Create a single partition on each LUN
+      parted:
+        device: "{{ item }}"
+        label: gpt
+        number: 1
+        state: present
+        part_type: primary
+        part_start: 0%
+        part_end: 100%
+      with_items: "{{ luns }}"
+      loop_control:
+        label: "{{ item }}"
+

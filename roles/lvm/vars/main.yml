@@ -1,0 +1,18 @@
+physical_volumes:
+  - device: /dev/mapper/DBH01p1
+  - device: /dev/mapper/DBF01p1
+
+volume_groups:
+  - vg: OH_VG
+    device: /dev/mapper/DBH01p1
+  - vg: DF_VG
+    device: /dev/mapper/DBF01p1
+
+logical_volumes:
+  - vg: OH_VG
+    lv: OH_LV
+    size: 24.99g
+  - vg: DF_VG
+    lv: DF_LV
+    size: 24.99g
+

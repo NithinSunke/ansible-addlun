@@ -1,0 +1,23 @@
+---
+- name: Ensure mount points exist
+  file:
+    path: "{{ item.path }}"
+    state: directory
+  with_items: "{{ mount_points }}"
+
+- name: Create filesystems on logical volumes
+  filesystem:
+    fstype: "{{ item.fstype }}"
+    dev: "{{ item.device }}"
+  with_items: "{{ mount_points }}"
+  ignore_errors: yes
+
+- name: Mount logical volumes and update /etc/fstab
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.device }}"
+    fstype: "{{ item.fstype }}"
+    state: mounted
+    opts: defaults
+  with_items: "{{ mount_points }}"
+
