@@ -7,5 +7,4 @@
   roles:
     - install_packages
     - configure_iscsi
-    - discover_luns
     - configure_multipath
