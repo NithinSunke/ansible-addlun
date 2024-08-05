@@ -5,6 +5,12 @@
     regexp: '^InitiatorName='
     line: "InitiatorName={{ iscsi_initiator_name }}"
 
+- name: restart iSCSI initiator service
+
+  systemd:
+    name: iscsid
+    state: restarted    
+
 - name: Discover iSCSI targets
   shell: "iscsiadm -m discovery -t sendtargets -p {{ iscsi_target_ip }}"
   register: discovery_output

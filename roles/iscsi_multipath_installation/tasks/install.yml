@@ -1,6 +1,5 @@
 ---
 - name: Install required packages
-  become: yes
   yum:
     name:
       - iscsi-initiator-utils
@@ -8,14 +7,13 @@
     state: present
 
 - name: Enable and start iSCSI initiator service
-  become: yes
+
   systemd:
     name: iscsid
     enabled: yes
     state: started
 
 - name: Enable and start multipathd service
-  become: yes
   systemd:
     name: multipathd
     enabled: yes
