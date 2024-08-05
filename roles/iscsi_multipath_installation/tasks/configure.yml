@@ -6,7 +6,6 @@
     line: "InitiatorName={{ iscsi_initiator_name }}"
 
 - name: restart iSCSI initiator service
-
   systemd:
     name: iscsid
     state: restarted    
