@@ -1,0 +1,19 @@
+---
+- name: Ensure the physical volumes exist
+  command: pvcreate {{ item.device }}
+  ignore_errors: yes
+  with_items: "{{ physical_volumes }}"
+
+- name: Create volume groups
+  lvg:
+    vg: "{{ item.vg }}"
+    pvs: "{{ item.device }}"
+  with_items: "{{ volume_groups }}"
+
+- name: Create logical volumes
+  lvol:
+    vg: "{{ item.vg }}"
+    lv: "{{ item.lv }}"
+    size: "{{ item.size }}"
+  with_items: "{{ logical_volumes }}"
+

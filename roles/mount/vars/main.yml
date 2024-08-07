@@ -1,0 +1,5 @@
+# roles/mount/vars/main.yml
+mount_points:
+  - { device: /dev/OH_VG/OH_LV, path: /u01, fstype: xfs }
+  - { device: /dev/DF_VG/DF_LV, path: /u02, fstype: xfs }
+
