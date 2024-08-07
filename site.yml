@@ -5,9 +5,17 @@
   vars_files:
     - vars/main.yml
   roles:
+<<<<<<< HEAD
 #    - install_packages
 #    - configure_iscsi
 #    - configure_multipath
 #    - partition_luns
 #    - lvm
+=======
+    - install_packages
+    - configure_iscsi
+    - configure_multipath
+    - partition_luns
+    - lvm
+>>>>>>> 794fc53e2da73835623cc31633f1d45c10166dd8
     - mount
